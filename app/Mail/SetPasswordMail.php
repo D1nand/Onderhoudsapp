@@ -1,4 +1,6 @@
 <?php
+namespace App\Mail;
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -7,18 +9,18 @@ class SetPasswordMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $verificationCode;
+    public $passwordCode;
 
-    public function __construct($verificationCode)
+    public function __construct($passwordCode)
     {
-        $this->verificationCode = $verificationCode;
+        $this->passwordCode = $passwordCode;
     }
 
     public function build()
     {
-        return $this->markdown('emails.set_password')
+        return $this->from('noreply@onderhoudsapp.nl','noreply')->subject('Voltooi uw registratie')->markdown('emails.set_password')
                     ->with([
-                        'verificationCode' => $this->verificationCode,
+                        'passwordCode' => $this->passwordCode,
                     ]);
     }
 }

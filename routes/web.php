@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-    Route::get('/register', 'App\Http\Controllers\UserController@registerForm');
-    Route::post('/register', 'App\Http\Controllers\UserController@register');
-    Route::get('/set-password/{code}', 'App\Http\Controllers\UserController@setPasswordForm');
-    Route::post('/set-password', 'App\Http\Controllers\UserController@setPassword');
 });
+Route::get('/register', 'App\Http\Controllers\UserController@registerForm');
+Route::post('/register', 'App\Http\Controllers\UserController@register');
+Route::get('/set-password/{code}', 'App\Http\Controllers\UserController@setPasswordForm')->name('set-password');
+Route::post('/set-password', 'App\Http\Controllers\UserController@setPassword');
+

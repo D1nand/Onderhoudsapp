@@ -20,7 +20,8 @@
                 @endforeach
             </ul>
         @endif
-
+        <label for="name">Naam:</label><br>
+        <input type="text" id="name" name="name"><br>
         <label for="email">E-mail:</label><br>
         <input type="email" id="email" name="email"><br><br>
 
