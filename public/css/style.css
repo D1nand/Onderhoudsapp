@@ -1,0 +1,244 @@
+/* styles.css */
+
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-field {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.submit-button {
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #2980b9;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+.message {
+    font-size: 0.8em;
+    color: #666;
+}
+
+.error {
+    color: red;
+}
+
+.agenda-container{    
+    width: 100%;
+    max-width: 50%;
+    margin: 50px 25%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    font-weight: bold;
+}
+.calendar {
+    
+}
+
+td{
+    padding: 40px;
+}
+.current-day {
+    border: 2px solid #3498db;
+    border-radius: 30px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+.header {
+    background-color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+      /* Elegant Buttons */
+      .header-btn {
+        padding: 12px 24px;
+        margin: 0 10px;
+        border: 2px solid #3498db;
+        border-radius: 30px;
+        background-color: #3498db;
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+        font-size: 16px;
+        font-weight: bold;
+        display: inline-block;
+        text-transform: uppercase;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .header-btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 120%;
+        height: 120%;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        z-index: -1;
+        transform: translate(-50%, -50%) scale(0);
+    }
+
+    .header-btn:hover::before {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    .header-btn:hover {
+        background-color: transparent;
+        color: #3498db;
+    }
+    .active {
+        background-color: #2980b9;
+        color: #fff;
+    }
+
+    /* Remove hover effect for active buttons */
+    .active:hover {
+        background-color: #2980b9;
+        color: #fff;
+        cursor: default;
+    }
+
+    @media only screen and (max-width: 320px) {
+        .header {
+            padding: 8px 12px;
+        }
+        .header-btn {
+            padding: 8px 12px;
+            margin: 0 6px;
+            font-size: 12px;
+        }
+        .agenda-container {
+            padding: 10px;
+        }
+        .agenda-container h1 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .calendar th,
+        .calendar td {
+            padding: 8px;
+        }
+    }
+    
+    /* Adjustments for medium-sized phones */
+    @media only screen and (min-width: 321px) and (max-width: 375px) {
+        .header {
+            padding: 10px 16px;
+        }
+        .header-btn {
+            padding: 10px 16px;
+            margin: 0 8px;
+            font-size: 14px;
+        }
+        .agenda-container {
+            padding: 16px;
+        }
+        .agenda-container h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .calendar th,
+        .calendar td {
+            padding: 10px;
+        }
+    }
+    
+    /* Adjustments for larger phones */
+    @media only screen and (min-width: 376px) and (max-width: 414px) {
+        .header {
+            padding: 12px 20px;
+        }
+        .header-btn {
+            padding: 12px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+        .agenda-container {
+            padding: 20px;
+        }
+        .agenda-container h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .calendar th,
+        .calendar td {
+            padding: 12px;
+        }
+    }
+    
+    /* Adjustments for small tablets and landscape phones */
+    @media only screen and (min-width: 415px) and (max-width: 575px) {
+        .header {
+            padding: 12px 24px;
+        }
+        .header-btn {
+            padding: 12px 24px;
+            margin: 0 12px;
+            font-size: 18px;
+        }
+        .agenda-container {
+            padding: 24px;
+        }
+        .agenda-container h1 {
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+        .calendar th,
+        .calendar td {
+            padding: 14px;
+        }
+    }

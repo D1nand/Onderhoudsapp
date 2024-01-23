@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Registratie</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
+
 <body>
-    <h1>Registratie</h1>
+    <div class="container">
+        <h1>Registratie</h1>
 
-    @if(session('success'))
+        @if(session('success'))
         <p>{{ session('success') }}</p>
-    @endif
-
-    <form method="POST" action="/register">
-        @csrf
-
-        @if ($errors->any())
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
         @endif
-        <label for="name">Naam:</label><br>
-        <input type="text" id="name" name="name"><br>
-        <label for="email">E-mail:</label><br>
-        <input type="email" id="email" name="email"><br><br>
 
-        <button type="submit">Registreer</button>
-    </form>
+        <form class="form" method="POST" action="/register">
+            @csrf
+
+            <label for="name">Naam:</label><br>
+            <input class="input-field" type="text" id="name" name="name"><br>
+            <label for="email">E-mail:</label><br>
+            <input class="input-field" type="email" id="email" name="email"><br><br>
+
+            <button class="submit-button" type="submit">Registreer</button>
+            @if($errors->any())
+            <div class="error-message">
+                {{ $errors->first() }}
+            </div>
+            @endif
+        </form>
+    </div>
 </body>
+
 </html>

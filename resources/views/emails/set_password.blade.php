@@ -1,12 +1,12 @@
 @component('mail::message')
-# Set your password
+# Stel je wachtwoord in
 
-To set your password, please click the button below and use the verification code: {{ $passwordCode }}
+Om je wachtwoord in te stellen, klik je op de onderstaande knop.
 
-@component('mail::button', ['url' => route('set-password', ['code' => $passwordCode])])
-Set Password
+@component('mail::button', ['url' => $passwordCode])
+Wachtwoord instellen
 @endcomponent
 
-Thanks,<br>
-{{ config('app.name') }}
+Bedankt,<br>
+Onderhoudsapp
 @endcomponent

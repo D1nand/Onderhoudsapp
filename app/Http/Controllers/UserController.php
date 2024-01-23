@@ -18,10 +18,19 @@ class UserController extends Controller
 
     public function register(Request $request)
     {
+        $customMessages = [
+            'email.required' => 'Vul aub uw e-mailadres in.',
+            'email.email' => 'Vul aub een geldig e-mailadres in.',
+            'email.unique' => 'Dit e-mailadres is al geregistreerd.',
+            'name.required' => 'Vul aub uw naam in.',
+        ];
+    
         $request->validate([
             'email' => 'required|email|unique:users',
-            'name' => 'required', // Voeg een validatie toe voor de naam
-        ]);
+            'name' => 'required',
+        ], $customMessages);
+
+
 
         $user = User::create([
             'name' => $request->name,
@@ -46,8 +55,17 @@ class UserController extends Controller
     public function setPassword(Request $request)
     {
         $request->validate([
-            'passwordCode' => 'required',
-            'password' => 'required|confirmed|min:8',
+            'password' => [
+                'required',
+                'string',
+                'min:8',           
+                'regex:/[A-Z]/',   
+                'regex:/\d{2}/',   
+                'regex:/[!@#$%^&*]/',
+                'confirmed',       
+            ],
+            'password_confirmation' => 'required|string',
+            'passwordCode' => 'required',  
         ]);
     
         $user = User::where('passwordCode', $request->passwordCode)->firstOrFail();
