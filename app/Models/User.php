@@ -1,4 +1,6 @@
 <?php
+// app/Models/User.php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,7 +14,6 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'email_verified_at',
         'password',
         'passwordCode',
     ];
@@ -22,7 +23,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    // Define the relationship with the Task model
+    public function tasks()
+    {
+        return $this->hasMany(Task::class, 'user_id');
+    }
 }
+

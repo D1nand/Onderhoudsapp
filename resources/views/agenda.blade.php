@@ -11,7 +11,7 @@
         <h1>Onderhoudsapp</h1><br>
         <div class="header-buttons">
             <a href="{{ route('agenda') }}" class="header-btn {{ Request::is('agenda') ? 'active' : '' }}">Agenda</a>
-            <a href="{{ route('add_task') }}" class="header-btn {{ Request::is('add-task') ? 'active' : '' }}">Taak Toevoegen</a>
+            <a href="{{ route('tasks.create') }}" class="header-btn {{ Request::is('add-task') ? 'active' : '' }}">Taak Toevoegen</a>
             <a href="{{ route('task_management') }}" class="header-btn {{ Request::is('task-management') ? 'active' : '' }}">Taakbeheer</a>
             <a href="{{ route('logout') }}" class="header-btn">Uitloggen</a>
         </div>

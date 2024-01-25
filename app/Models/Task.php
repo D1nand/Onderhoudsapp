@@ -1,5 +1,4 @@
 <?php
-
 // app/Models/Task.php
 
 namespace App\Models;
@@ -12,13 +11,15 @@ class Task extends Model
     use HasFactory;
 
     protected $fillable = [
-        'userId',
+        'userId',  // Make sure it matches the column name in your tasks table
         'taskname',
         'beginDate',
         'endDate',
-        // Add any other fields you want to mass assign
     ];
 
-    // Add relationships or other methods if needed
+    // Define the relationship with the User model
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'userId'); // Use 'userId' as the foreign key
+    }
 }
-
