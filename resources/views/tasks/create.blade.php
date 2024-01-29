@@ -21,6 +21,15 @@
         <h2>Add Task</h2>
         <form method="POST" action="{{ route('tasks.store') }}">
             @csrf
+            <!-- Add this code to display validation errors -->
+            @if ($errors->any())
+            <div class="error">
+                    @foreach ($errors->all() as $error)
+                    {{ $error }}
+                    @endforeach
+            </div>
+            @endif
+
             <div class="form-group">
                 <label for="taskname">Task Name:</label>
                 <input type="text" name="taskname" class="form-control" required>

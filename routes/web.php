@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\TaskController;
-
 use App\Http\Middleware\PreventBackMiddleware; // Add this line
 
 /*
@@ -36,7 +35,7 @@ Route::middleware(['auth.check'])->group(function () {
         ->name('agenda')
         ->middleware([PreventBackMiddleware::class]); // Apply middleware to 'agenda' route
         Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
-        Route::post('/tasks', 'TaskController@store')->name('tasks.store');
+        Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
 
     Route::get('/task-management', [TaskController::class, 'taskManagement'])->name('task_management');
 });
