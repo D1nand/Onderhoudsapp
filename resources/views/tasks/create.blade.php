@@ -10,8 +10,8 @@
     <div class="header">
         <h1>Onderhoudsapp</h1><br>
         <div class="header-buttons">
-            <a href="{{ route('agenda') }}" class="header-btn {{ Request::is('agenda') ? 'active' : '' }}">Agenda</a>
-            <a href="{{ route('tasks.create') }}" class="header-btn {{ Request::is('add-task') ? 'active' : '' }}">Taak Toevoegen</a>
+            <a href="{{ route('agenda', ['month' => now()->format('Y-m')]) }}" class="header-btn {{ Request::is('agenda*') ? 'active' : '' }}">Agenda</a>
+            <a href="{{ route('tasks.create') }}" class="header-btn {{ Request::is('tasks/create') ? 'active' : '' }}">Taak Toevoegen</a>
             <a href="{{ route('task_management') }}" class="header-btn {{ Request::is('task-management') ? 'active' : '' }}">Taakbeheer</a>
             <a href="{{ route('logout') }}" class="header-btn">Uitloggen</a>
         </div>
@@ -24,9 +24,9 @@
             <!-- Add this code to display validation errors -->
             @if ($errors->any())
             <div class="error">
-                    @foreach ($errors->all() as $error)
-                    {{ $error }}
-                    @endforeach
+                @foreach ($errors->all() as $error)
+                {{ $error }}
+                @endforeach
             </div>
             @endif
 

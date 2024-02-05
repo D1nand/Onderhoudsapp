@@ -31,11 +31,9 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth.check'])->group(function () {
-    Route::get('/agenda/{month?}', [AgendaController::class, 'showMonthlyAgenda'])
-        ->name('agenda')
-        ->middleware([PreventBackMiddleware::class]); // Apply middleware to 'agenda' route
-        Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
-        Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
+    Route::get('/agenda/{month?}', [AgendaController::class, 'showMonthlyAgenda'])->name('agenda')->where(['month' => '[0-9]{4}-[0-9]{2}']);
+    Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
+    Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
 
     Route::get('/task-management', [TaskController::class, 'taskManagement'])->name('task_management');
 });

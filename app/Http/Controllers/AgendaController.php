@@ -7,6 +7,10 @@ use Carbon\Carbon;
 
 class AgendaController extends Controller
 {
+    private function getFirstDayOfMonth($date)
+    {
+        return Carbon::createFromDate($date->year, $date->month, 1);
+    }
     public function showMonthlyAgenda($month = null)
     {
         // If $month is null, use the current month
@@ -21,10 +25,19 @@ class AgendaController extends Controller
         $previousMonth = $date->copy()->subMonth()->format('Y-m');
         $nextMonth = $date->copy()->addMonth()->format('Y-m');
 
+        // Get the first day of the month
+        $firstDayOfMonth = $this->getFirstDayOfMonth($date);
+
+        $daysInFebruary = $date->copy()->addMonth()->isLeapYear() ? 29 : 28;
+
+        $daysInMonth = [
+            31, $daysInFebruary, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+        ][$date->month - 1];
+
+
         // Calculate days for the provided month
-        $daysInMonth = $date->daysInMonth;
         $calendar = [];
-        $currentDate = Carbon::createFromDate($date->year, $date->month, 1);
+        $currentDate = $firstDayOfMonth->copy(); // Start from the first day of the month
 
         while ($currentDate->format('Y-m') === $month) {
             $week = [];
